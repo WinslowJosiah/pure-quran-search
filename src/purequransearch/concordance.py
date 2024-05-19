@@ -323,6 +323,11 @@ class Concordance:
             found_result = True
             # Check that all other words match
             for offset, other_word in enumerate(other_words, 1):
+                # If word is past end of Quran
+                if word_index + offset >= len(self.words):
+                    found_result = False
+                    break
+
                 next_word = self.normalize_word(
                     self.words[word_index + offset],
                     preserve_case=case_sensitive,
