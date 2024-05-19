@@ -138,6 +138,8 @@ def _search(query: str, corpus: str):
             # Create mapping between verse index and search result
             verse_map[verse_index].append((index, word_length))
 
+        verse_map[verse_index].sort()
+
     occurrence_total = 0
     verse_total = 0
     # For each verse which is part of the results
@@ -147,7 +149,6 @@ def _search(query: str, corpus: str):
         # Get info for this verse
         verse_start = concordance.starts[chapter][verse]
         text = concordance.content[chapter][verse]
-        words = Concordance.text_to_words(text, alnum_only=False)
 
         # HACK What I want to do is surround each occurrence of a search
         # term with braces (like "In the name {{ of Allah }}"). The most
