@@ -41,6 +41,10 @@ Found 2 occurrence(s) in 2 verse(s).
 
 ## Changelog
 
+### v0.0.2 (2024-05-19)
+
+- Fixed CLI error that can happen with overlapping matches.
+
 ### v0.0.1 (2024-05-19)
 
 Initial release.
