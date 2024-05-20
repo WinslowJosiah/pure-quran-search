@@ -113,7 +113,7 @@ class Concordance:
             Word to normalize.
         preserve_case : bool, default False
             If true, preserve the case of the word. If false, convert
-            the word to lowercase
+            the word to lowercase.
 
         Returns
         -------
@@ -227,7 +227,7 @@ class Concordance:
         Returns
         -------
         set of tuple of (int, int)
-            Chapter and verse indices (1-based).
+            Chapter and verse indices (0-based).
         """
         return self._word_indices_to_verses(tuple(word_indices))
 
