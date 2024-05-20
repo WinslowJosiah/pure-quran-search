@@ -1,6 +1,6 @@
 [project]
 name = "purequransearch"
-version = "0.0.3"
+version = "0.0.4"
 dependencies = [
     "lxml >= 5.0.0",
 ]

@@ -29,10 +29,10 @@ purequransearch can also be used as a command line tool:
 
 ```bash
 $ purequransearch search "the test" -c pickthall
-6:165   He it is Who hath placed you as viceroys of the earth and hath exalted some of you in rank above others, that He may try you by {{(the test}} of) that which He hath given you. Lo! Thy Lord is swift in prosecution, and Lo! He verily is Forgiving, Merciful.
+6:165   He it is Who hath placed you as viceroys of the earth and hath exalted some of you in rank above others, that He may try you by {(the test} of) that which He hath given you. Lo! Thy Lord is swift in prosecution, and Lo! He verily is Forgiving, Merciful.
 Occurrences: 1; Verses: 1
 
-23:30   Lo! herein verily are portents, for lo! We are ever putting (mankind) to {{the test.}}
+23:30   Lo! herein verily are portents, for lo! We are ever putting (mankind) to {the test.}
 Occurrences: 2; Verses: 2
 
 Found 2 occurrence(s) in 2 verse(s).
@@ -40,6 +40,10 @@ Found 2 occurrence(s) in 2 verse(s).
 ```
 
 ## Changelog
+
+### v0.0.4 (2024-05-20)
+
+- Fixed CLI error when searching with the `#` option.
 
 ### v0.0.3 (2024-05-19)
 
