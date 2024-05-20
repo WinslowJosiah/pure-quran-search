@@ -138,6 +138,7 @@ def _search(query: str, corpus: str):
             # Create mapping between verse index and search result
             verse_map[verse_index].append((index, word_length))
 
+    for verse_index in verse_map:
         verse_map[verse_index].sort()
 
     occurrence_total = 0
