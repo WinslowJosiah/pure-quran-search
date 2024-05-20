@@ -41,6 +41,11 @@ Found 2 occurrence(s) in 2 verse(s).
 
 ## Changelog
 
+### v0.0.3 (2024-05-19)
+
+- Fixed CLI error when searching past end of Quran.
+- Improved display of braces on CLI.
+
 ### v0.0.2 (2024-05-19)
 
 - Fixed CLI error that can happen with overlapping matches.
