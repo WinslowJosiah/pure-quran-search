@@ -153,11 +153,11 @@ def _search(query: str, corpus: str):
         # HACK What I want to do is surround each occurrence of a search
         # term with braces (like "In the name {{ of Allah }}"). The most
         # robust way I can think of to do this is to split the text into
-        # words, make the replacement, then join the text together.
+        # words, position the braces, then join the text together.
         text = text.split()
-        # NOTE Making the text replacements in reverse ensures that they
-        # don't affect the positions of the other terms in the text.
-        for index, length in reversed(verse_results):
+        left_braces = ["" for _ in text]
+        right_braces = ["" for _ in text]
+        for verse_result_i, (index, length) in enumerate(verse_results, 1):
             occurrence_total += 1
 
             # Find the starting index of the term
@@ -185,18 +185,25 @@ def _search(query: str, corpus: str):
             if overflow:
                 # If there is overflow, surround in braces and display
                 # ellipsis at end
-                text[term_start:] = [
-                    "{{" + " ".join(text[term_start:]) + " ...}}"
-                ]
+                left_braces[term_start] += "{" * verse_result_i + " "
+                right_braces[term_end - 1] = (
+                    " ..." + "}" * verse_result_i + right_braces[term_end - 1]
+                )
                 # TODO Display part of next verse if there is overflow
             else:
                 # If there is no overflow, surround in braces
-                text[term_start:term_end] = [
-                    "{{" + " ".join(text[term_start:term_end]) + "}}"
-                ]
+                left_braces[term_start] += "{" * verse_result_i + " "
+                right_braces[term_end - 1] = (
+                    " " + "}" * verse_result_i + right_braces[term_end - 1]
+                )
 
         # Rejoin and display the text
-        text = " ".join(text)
+        text = " ".join(
+            left_brace + word + right_brace
+            for word, left_brace, right_brace in zip(
+                text, left_braces, right_braces
+            )
+        )
         print(f"{chapter + 1}:{verse + 1}\t{text}")
         print(f"Occurrences: {occurrence_total}; Verses: {verse_total}")
         print()
